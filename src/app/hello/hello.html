@@ -1,0 +1,12 @@
+<p>this is my first angular component</p>
+<h1> {{title}} </h1>
+<button [disabled]="isdisabled" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-400
+         disabled:cursor-not-allowed
+         disabled:opacity-60" (click)="onClick()">Click me</button>
+<h1> Count:  {{ count() }}</h1>
+<h1> Double Count: {{ doubleCount() }}</h1>
+<!-- <h1>Double Method: {{ getdoubleCount() }}</h1> -->
+
+<button class="bg-gray-300 text-white px-4 py-2 rounded-lg  hover:bg-gray-700" (click)="increaseCounter()">+</button>
+<button class="bg-gray-300 text-white px-4 py-2 rounded-lg  hover:bg-gray-700" (click)="decreaseCounter()">-</button>
+<button class="bg-gray-400 text-white px-4 py-2 rounded-lg  hover:bg-gray-500" (click)="resetCounter()"><></button>
