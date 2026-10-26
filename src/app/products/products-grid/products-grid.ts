@@ -1,6 +1,6 @@
 import { MatIconModule } from '@angular/material/icon';
 import { ProductsCard } from './../products-card/products-card';
-import { Component, Signal } from '@angular/core';
+import { Component, computed, Signal } from '@angular/core';
 import { signal } from '@angular/core';
 import { Product } from '../product';
 import {MatInputModule} from '@angular/material/input';
@@ -40,6 +40,16 @@ export class ProductsGrid {
 
   ]
   );
+
+  protected readonly filteredProducts = computed(() : Product[]  => {
+    const term= this.searchTerm().toLocaleLowerCase().trim();
+      if(!term)
+        return this.products();
+      return this.products().filter((product) => product.name.toLocaleLowerCase().includes(term) ||
+                                                 product.description.toLocaleLowerCase().includes(term)
+                                   );
+  }
+);
 
   protected clearSearchText()
   {

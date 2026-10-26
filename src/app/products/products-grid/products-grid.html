@@ -13,12 +13,12 @@
 
 
 <div class="products-grid">
-  @for (product of products(); track product.id) {
+  @for (product of filteredProducts(); track product.id) {
       <app-products-card [product_]="product" addButtonLabel="View Details"/>
   } @empty {
     <div class="empty-state">
       <mat-icon>inventory_2</mat-icon>
-      <h3>No Products Available</h3>
+      <h3>No Products matches the search</h3>
       <p>Check back later for new arrivals</p>
     </div>
   }
