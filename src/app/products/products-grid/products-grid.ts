@@ -60,4 +60,9 @@ export class ProductsGrid {
   {
     this.searchTerm.update((value) => value.trim());
   }
+
+  protected onAddToCart(product: Product)
+  {
+    console.log('Added to cart',product.name);
+  }
 }
