@@ -1,10 +1,11 @@
 import { MatIconModule } from '@angular/material/icon';
 import { ProductsCard } from './../products-card/products-card';
-import { Component, computed, Signal } from '@angular/core';
+import { Component, computed, Signal, inject } from '@angular/core';
 import { signal } from '@angular/core';
 import { Product } from '../product';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { CartService } from '../../cart/cart-service';
 
 @Component({
   imports: [ProductsCard,MatIconModule , MatInputModule, FormsModule ],
@@ -41,6 +42,8 @@ export class ProductsGrid {
   ]
   );
 
+  private readonly cartService= inject(CartService);
+
   protected readonly filteredProducts = computed(() : Product[]  => {
     const term= this.searchTerm().toLocaleLowerCase().trim();
       if(!term)
@@ -63,6 +66,7 @@ export class ProductsGrid {
 
   protected onAddToCart(product: Product)
   {
-    console.log('Added to cart',product.name);
+    
+    this.cartService.addToCart(product);
   }
 }
